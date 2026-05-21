@@ -1,0 +1,16 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
+  "experimentalServices": {
+    "frontend": {
+      "routePrefix": "/",
+      "framework": "nextjs"
+    },
+    "backend": {
+      "root": "backend",
+      "routePrefix": "/_/backend"
+    }
+  }
+}

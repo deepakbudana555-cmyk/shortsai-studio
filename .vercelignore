@@ -1,0 +1,14 @@
+node_modules
+.next
+dist
+electron
+backend
+*.log
+.env.local
+.env*.local
+test-*.js
+check-ffmpeg.js
+debug-*.js
+*.ps1
+tsconfig.tsbuildinfo
+supabase

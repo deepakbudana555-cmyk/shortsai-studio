@@ -1,0 +1,74 @@
+{
+  "name": "shortsai-studio",
+  "version": "1.0.0",
+  "private": true,
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "electron:dev": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron:build": "next build && xcopy public .next\\standalone\\public /E /I /Y && xcopy .next\\static .next\\standalone\\.next\\static /E /I /Y && xcopy node_modules\\@ffmpeg-installer .next\\standalone\\node_modules\\@ffmpeg-installer /E /I /Y && electron-builder"
+  },
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@google/generative-ai": "^0.17.0",
+    "@supabase/ssr": "^0.4.0",
+    "@supabase/supabase-js": "^2.44.4",
+    "axios": "^1.7.3",
+    "clsx": "^2.1.1",
+    "fluent-ffmpeg": "^2.1.3",
+    "framer-motion": "^11.3.19",
+    "lucide-react": "^0.414.0",
+    "next": "14.2.5",
+    "openai": "^4.57.0",
+    "react": "^18",
+    "react-color": "^2.19.3",
+    "react-dom": "^18",
+    "react-dropzone": "^14.2.3",
+    "react-hot-toast": "^2.4.1",
+    "react-slider": "^2.0.6",
+    "tailwind-merge": "^2.4.0",
+    "tus-js-client": "^4.3.1",
+    "zustand": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "concurrently": "^9.2.1",
+    "electron": "^42.1.0",
+    "electron-builder": "^26.8.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5",
+    "wait-on": "^9.0.10"
+  },
+  "build": {
+    "appId": "com.shortsai.studio",
+    "productName": "ShortsAI Studio",
+    "asar": false,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      ".next/standalone/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "backend",
+        "to": "backend",
+        "filter": ["**/*"]
+      }
+    ],
+    "win": {
+      "target": "zip"
+    }
+  }
+}
